@@ -6,27 +6,29 @@ class TrendingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-            child: Column(children: [
-              const TextField(
-                decoration: InputDecoration(
-                    labelText: "Search",
-                    hintText: "Search",
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(25.0)))),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return ListTileWidget(maxHeight: 200);
-                  }),
-            ])));
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        children: [
+          const TextField(
+            decoration: InputDecoration(
+                labelText: "Search",
+                hintText: "Search",
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+          ),
+          Expanded(
+            child: ListView.builder(
+                padding: const EdgeInsets.only(top: 20),
+                shrinkWrap: true,
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return const ListTileWidget(maxHeight: 200);
+                }),
+          ),
+        ],
+      ),
+    );
   }
 }

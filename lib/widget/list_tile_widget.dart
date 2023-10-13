@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gif/flutter_gif.dart';
 import 'package:flutter_giphy/constants.dart';
@@ -39,27 +37,27 @@ class _ListTileWidgetState extends State<ListTileWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Card(
-        color: Colors.cyanAccent,
-        child: Column(
-          children: [
-            GifImage(
-              height: widget.maxHeight,
-              image: NetworkImage(
-                  "https://user-images.githubusercontent.com/14011726/94132137-7d4fc100-fe7c-11ea-8512-69f90cb65e48.gif"),
+    return Card(
+      color: Colors.cyanAccent,
+      child: Column(
+        children: [
+          ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: widget.maxHeight),
+            child: GifImage(
+              image: NetworkImage(Constants.gif),
               controller: controller,
+              fit: BoxFit.fill,
             ),
-            Container(
-                alignment: Alignment.bottomLeft,
-                padding: EdgeInsets.only(left: 10),
-                child: Image(
-                  image: AssetImage(Constants.favourite),
-                  fit: BoxFit.cover,
-                  width: 22,
-                )),
-          ],
-        ),
+          ),
+          Container(
+              alignment: Alignment.bottomLeft,
+              padding: const EdgeInsets.fromLTRB(10, 7, 0, 0),
+              child: Image(
+                image: AssetImage(Constants.favourite),
+                fit: BoxFit.cover,
+                width: 22,
+              )),
+        ],
       ),
     );
   }

@@ -40,7 +40,7 @@ class _HomePageState extends State<StatefulWidget>
           title: const Text('Giphy Sample'),
           bottom: TabBar(
             controller: controller,
-            tabs: [
+            tabs: const [
               Tab(text: 'Trending'),
               Tab(text: 'Favourite'),
             ],
@@ -48,7 +48,7 @@ class _HomePageState extends State<StatefulWidget>
         ),
         body: TabBarView(
           controller: controller,
-          children: [
+          children: const [
             TrendingWidget(),
             FavouriteWidget(),
           ],
